@@ -1,0 +1,13 @@
+services:
+  api:
+    build: .
+    container_name: fastapi-application
+    environment:
+      PORT: 80
+    ports:
+      - '80:80'
+  cache:
+    image: redis:6.2-alpine
+    restart: always
+    ports:
+      - '6379:6379'
