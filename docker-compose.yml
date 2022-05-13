@@ -6,12 +6,21 @@ services:
       PORT: 80
     ports:
       - '80:80'
-#    volumes:
-#      - application_files:/tmp/test
+    volumes:
+      - application_files:/tmp/test
   cache:
     image: redis:6.2-alpine
     restart: always
     ports:
       - '6379:6379'
-#volumes:
-#  application_files:
+  api:
+    build: .
+    container_name: fastapi-application1
+    environment:
+      PORT: 80
+    ports:
+      - '80:80'
+    volumes:
+      - application_files:/tmp/test
+volumes:
+  application_files:
