@@ -22,5 +22,10 @@ services:
       - '80:80'
     volumes:
       - application_files:/tmp/test
+  volcopy:
+    build: volume
+    container_name: myvolume
+    volumes:
+      - application_files:/tmp/test
 volumes:
   application_files:
