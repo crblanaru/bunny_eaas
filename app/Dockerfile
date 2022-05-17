@@ -4,8 +4,8 @@ WORKDIR /app
 
 RUN apt update
 
-COPY requirements.txt ./
+COPY ./files/requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY ./* ./app
+COPY ./files ./app
 
