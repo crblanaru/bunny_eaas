@@ -1,6 +1,6 @@
 services:
   api:
-    build: .
+    build: app
     container_name: fastapi-application
     environment:
       PORT: 80
@@ -14,7 +14,7 @@ services:
     ports:
       - '6379:6379'
   api1:
-    build: .
+    build: app2
     container_name: fastapi-application1
     environment:
       PORT: 80
