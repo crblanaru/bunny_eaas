@@ -1,17 +1,22 @@
 services:
   api:
-    build: .
+    build: app
     container_name: fastapi-application
     environment:
       PORT: 80
     ports:
       - '80:80'
-#    volumes:
-#      - application_files:/tmp/test
+    volumes:
+      - application_files:/home/helper
   cache:
     image: redis:6.2-alpine
     restart: always
     ports:
       - '6379:6379'
-#volumes:
-#  application_files:
+  helper: 
+    build: helper
+    container_name: helper
+    volumes:
+      - application_files:/home/helper
+volumes:
+  application_files:
