@@ -1,10 +1,12 @@
 services:
-  api:
-    build: .
-    container_name: fastapi-application
-    environment: &function
+  x-function: &function
+    environment: 
       PORT: 80
       APP_ENV: dev
+  api:
+    <<: *function
+    build: .
+    container_name: fastapi-application
     ports:
       - '80:80'
 #    volumes:
