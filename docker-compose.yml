@@ -10,8 +10,7 @@ services:
 #    volumes:
 #      - application_files:/tmp/test
   cache:
-    <<: *all_env
-    environment:
+    environment: *all_env
       PORT: 6379
     image: redis:6.2-alpine
     restart: always
