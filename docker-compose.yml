@@ -2,13 +2,17 @@ services:
   api:
     build: .
     container_name: fastapi-application
-    environment:
+    environment: &function
       PORT: 80
+      APP_ENV: dev
     ports:
       - '80:80'
 #    volumes:
 #      - application_files:/tmp/test
   cache:
+    <<: *function
+    environment:
+      PORT: 6379
     image: redis:6.2-alpine
     restart: always
     ports:
