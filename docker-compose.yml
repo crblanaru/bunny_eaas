@@ -1,19 +1,16 @@
 services:
-  x-function: &function
-    image: scratch
-    environment: 
-      PORT: 80
-      APP_ENV: dev
   api:
-    <<: *function
     build: .
     container_name: fastapi-application
+    environment: &all_env
+      PORT: 80
+      APP_ENV: dev
     ports:
       - '80:80'
 #    volumes:
 #      - application_files:/tmp/test
   cache:
-    <<: *function
+    <<: *all_env
     environment:
       PORT: 6379
     image: redis:6.2-alpine
