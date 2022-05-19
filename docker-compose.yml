@@ -12,7 +12,7 @@ services:
   cache:
     environment:
       <<: *all_env
-      PORT:6379
+      PORT: 6379
     image: redis:6.2-alpine
     restart: always
     ports:
