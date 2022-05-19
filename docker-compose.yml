@@ -1,5 +1,6 @@
 services:
   x-function: &function
+    image: scratch
     environment: 
       PORT: 80
       APP_ENV: dev
