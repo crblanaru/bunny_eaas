@@ -6,6 +6,9 @@ services:
       PORT: 80
     ports:
       - '80:80'
+    deploy:
+      mode: replicated
+      replicas: 4
 #    volumes:
 #      - application_files:/tmp/test
   cache:
