@@ -1,3 +1,4 @@
+[![Build Status](https://143.198.251.8/buildStatus/icon?job=simpleproj)](https://143.198.251.8/job/simpleproj/)
 ## Compose sample application
 ### Python/FastAPI application
 
