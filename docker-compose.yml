@@ -13,5 +13,5 @@ services:
     restart: always
     ports:
       - '6379:6379'
-#volumes:
-#  application_files:
+volumes:
+  application_files:
