@@ -4,7 +4,7 @@
 
 The purpose of this project is to showcase Bunnyshell features.
 
-The focus in on functionality.
+The focus in on the integration with Jenkins.
 
 Project structure:
 ```
