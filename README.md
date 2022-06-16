@@ -1,4 +1,3 @@
-[![Build Status](http://143.198.251.8/buildStatus/icon?job=FastAPI)](http://143.198.251.8/job/FastAPI/)
 ## Compose sample application
 ### Python/FastAPI application
 
