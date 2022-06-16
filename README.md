@@ -2,6 +2,8 @@
 ## Compose sample application
 ### Python/FastAPI application
 
+The purpose of this project is to showcase Bunnyshell features.
+
 Project structure:
 ```
 ├── docker-compose.yaml
