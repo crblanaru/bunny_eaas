@@ -4,6 +4,8 @@
 
 The purpose of this project is to showcase Bunnyshell features.
 
+The focus in on functionality.
+
 Project structure:
 ```
 ├── docker-compose.yaml
