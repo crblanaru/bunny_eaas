@@ -6,8 +6,14 @@ services:
       PORT: 80
     ports:
       - '80:80'
+    volumes:
+      - 'test:/var/test:ro'
   cache:
     image: redis:6.2-alpine
     restart: always
     ports:
       - '6379:6379'
+    volumes:
+      - 'test:/var/test:ro'
+volumes:
+  test:
