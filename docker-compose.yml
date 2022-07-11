@@ -8,6 +8,13 @@ services:
       - '80:80'
     volumes:
       - 'test:/var/test:rw'
+    resources:
+      limits:
+        cpus: '0.5'
+        memory: 300M
+      reservations:
+        cpus: '0.5'
+        memory: 200M
   cache:
     image: redis:6.2-alpine
     restart: always
