@@ -4,9 +4,10 @@ pipeline {
    stages {
 
         stage('app test') {
-            // when {
-            //     changeset '**/app/**'
-            // }
+            when {
+                branch 'feature/*'
+                //     changeset '**/app/**'
+            }
             agent any
 
             steps {
