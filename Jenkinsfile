@@ -20,6 +20,17 @@ pipeline {
             }
         }
 
+        stage('app env') {
+            agent any
+
+            steps {
+                echo 'printing env for App'
+                dir('app'){
+                    sh 'env'
+                }
+            }
+        }
+
     }
     post {
         always {
