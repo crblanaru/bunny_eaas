@@ -29,5 +29,3 @@ services:
     restart: "no"
 
 ```
-
-
