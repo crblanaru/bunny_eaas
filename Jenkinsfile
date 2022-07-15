@@ -1,26 +1,18 @@
 pipeline {
-    environment {
-  }
-    agent none
+   agent none
 
    stages {
 
-        stage('vote test') {
+        stage('app test') {
             when {
-                changeset '**/vote/**'
+                changeset '**/app/**'
             }
-            agent{
-                    docker{
-                        image 'python:2.7.18-slim-stretch'
-                        args '--user 0:0'
-                    }
-            }
+            agent any
 
             steps {
                 echo 'testing python App'
-                dir('vote'){
-                    sh 'pip install -r requirements.txt'
-                    sh 'nosetests -v'
+                dir('app'){
+                    sh 'curl https://api-ntsqmv.bunnyenv.com/'
                 }
             }
         }
