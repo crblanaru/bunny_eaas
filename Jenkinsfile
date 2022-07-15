@@ -4,9 +4,9 @@ pipeline {
    stages {
 
         stage('app test') {
-            when {
-                changeset '**/app/**'
-            }
+            // when {
+            //     changeset '**/app/**'
+            // }
             agent any
 
             steps {
