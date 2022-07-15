@@ -13,6 +13,7 @@ pipeline {
                 echo 'testing python App'
                 dir('app'){
                     sh 'curl https://api-ntsqmv.bunnyenv.com/'
+                    sh 'env'
                 }
             }
         }
