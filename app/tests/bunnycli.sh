@@ -1,8 +1,7 @@
-set -x
-
 # never good to rush into things
 sleep 10
 
+echo '-- extracting information about the pull request'
 # finding environment id from PR
 envid=$(curl -s -X 'GET' 'https://api.environments.bunnyshell.com/api/projects/168/environments?page=1' \
   -H 'accept: application/ld+json' \
@@ -22,10 +21,10 @@ while ! curl -s -X 'GET' \
   -H 'accept: application/ld+json' \
   -H "X-AUTH-TOKEN: $AUTH_TOKEN" | grep "status.*running" 
 do
-  echo "wait for deployment to be ready"
+  echo "-- waiting for deployment to be ready"
   sleep 10
 done
 
-echo "ready to start testing"
+echo "-- performing tests"
 
-curl "https://api-$unique.bunnyenv.com/" | grep "bunnyshell-neo.*is_amazing"
+curl "https://api-$unique.bunnyenv.com/" | grep "bunnyshell-neo.*is_amazing" && "-- test successful"
