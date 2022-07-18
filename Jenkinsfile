@@ -12,10 +12,8 @@ pipeline {
 
             steps {
                 echo 'testing python App'
-                dir('app'){
-                    sh 'curl https://api-ntsqmv.bunnyenv.com/'
-                    sh 'echo $CHANGE_BRANCH'
-                    sh 'echo $GIT_BRANCH'
+                dir('app/tests'){
+                    sh 'bash ./bunnycli.sh'
                 }
             }
         }
@@ -27,6 +25,7 @@ pipeline {
                 echo 'printing env for App'
                 dir('app'){
                     sh 'env'
+                    sh 'echo $GIT_BRANCH'
                 }
             }
         }
