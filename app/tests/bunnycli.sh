@@ -1,5 +1,7 @@
-set -x
-echo $GIT_BRANCH
+set -ex
+
+# never good to rush into things
+sleep 10
 
 # finding environment id from PR
 envid=$(curl -s -X 'GET' 'https://api.environments.bunnyshell.com/api/projects/168/environments?page=1' \
