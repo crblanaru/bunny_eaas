@@ -27,4 +27,4 @@ done
 
 echo "-- performing tests"
 
-curl "https://api-$unique.bunnyenv.com/" | grep "bunnyshell-neo.*is_amazing" && echo "-- test SUCCESSFUL" | echo "-- test FAILED"
+curl "https://api-$unique.bunnyenv.com/" | grep "bunnyshell-neo.*is_amazing" && echo "-- test SUCCESSFUL" || echo "-- test FAILED"
