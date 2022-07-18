@@ -1,4 +1,4 @@
-set -ex
+set -x
 
 # never good to rush into things
 sleep 10
@@ -8,13 +8,13 @@ envid=$(curl -s -X 'GET' 'https://api.environments.bunnyshell.com/api/projects/1
   -H 'accept: application/ld+json' \
   -H "X-AUTH-TOKEN: $AUTH_TOKEN" | grep -Po "id.*$GIT_BRANCH" | sed -E 's/.*"id":"?([^,"]*)"?.*/\1/')
 
-echo $envid
+[[ -z "$envid" ]] && { echo "envid is empty" ; exit 1; }
   
 unique=$(curl -s -X 'GET' 'https://api.environments.bunnyshell.com/api/projects/168/environments?page=1' \
   -H 'accept: application/ld+json' \
   -H "X-AUTH-TOKEN: $AUTH_TOKEN" | grep -Po "id.*$GIT_BRANCH" | sed -E 's/.*"unique":"?([^,"]*)"?.*/\1/')
 
-echo $unique
+[[ -z "$unique" ]] && { echo "envid is empty" ; exit 1; }
 
 # Get the status
 while ! curl -s -X 'GET' \
