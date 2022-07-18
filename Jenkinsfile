@@ -13,6 +13,8 @@ pipeline {
             steps {
                 echo 'testing python App'
                 dir('app/tests'){
+                    sh 'export GIT_BRANCH'
+                    sh 'export AUTH_TOKEN'
                     sh 'bash ./bunnycli.sh'
                 }
             }
