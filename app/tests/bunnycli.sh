@@ -1,15 +1,18 @@
+# debug
+#set -x
+
 # never good to rush into things
 sleep 10
 
 echo '-- extracting information about the pull request'
 # finding environment id from PR
-envid=$(curl -s -X 'GET' 'https://api.environments.bunnyshell.com/api/projects/$PROJECT/environments?page=1' \
+envid=$(curl -s -X 'GET' "https://api.environments.bunnyshell.com/api/projects/$PROJECT/environments?page=1" \
   -H 'accept: application/ld+json' \
   -H "X-AUTH-TOKEN: $AUTH_TOKEN" | grep -Po "id.*$GIT_BRANCH" | sed -E 's#.*"id":"?([^,"]*)"?.*#\1#')
 
 [[ -z "$envid" ]] && { echo "envid is empty" ; exit 1; }
   
-unique=$(curl -s -X 'GET' 'https://api.environments.bunnyshell.com/api/projects/$PROJECT/environments?page=1' \
+unique=$(curl -s -X 'GET' "https://api.environments.bunnyshell.com/api/projects/$PROJECT/environments?page=1" \
   -H 'accept: application/ld+json' \
   -H "X-AUTH-TOKEN: $AUTH_TOKEN" | grep -Po "id.*$GIT_BRANCH" | sed -E 's/.*"unique":"?([^,"]*)"?.*/\1/')
 
