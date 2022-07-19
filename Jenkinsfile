@@ -5,7 +5,7 @@ pipeline {
 
         stage('app test') {
             when {
-                branch 'feature/*'
+                branch 'feature-*'
                 //     changeset '**/app/**'
             }
             agent any
