@@ -1,3 +1,6 @@
+# debug
+set -x
+
 # never good to rush into things
 sleep 10
 
