@@ -31,5 +31,11 @@ done
 echo "-- performing tests"
 sleep 10
 
-curl "https://api-$unique.bunnyenv.com/" 
-curl "https://api-$unique.bunnyenv.com/" | grep "bunnyshell-neo.*is_amazing" && echo "-- test SUCCESSFUL" || echo "-- test FAILED"
+curl "https://api-$unique.bunnyenv.com/" | grep "bunnyshell-neo.*is_amazing"
+
+if [ $? -eq 0 ]; then
+    echo "-- test SUCCESSFUL"
+else
+    echo "-- test FAILED"
+    exit 1
+fi
