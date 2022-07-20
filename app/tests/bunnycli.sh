@@ -1,5 +1,5 @@
 # debug
-#set -x
+set -x
 
 # never good to rush into things
 sleep 10
@@ -31,4 +31,5 @@ done
 echo "-- performing tests"
 sleep 10
 
+curl "https://api-$unique.bunnyenv.com/" 
 curl "https://api-$unique.bunnyenv.com/" | grep "bunnyshell-neo.*is_amazing" && echo "-- test SUCCESSFUL" || echo "-- test FAILED"
