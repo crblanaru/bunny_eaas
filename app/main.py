@@ -11,7 +11,7 @@ def hello_world():
     api_key = os.getenv('API_KEY')
     db_endpoint = os.getenv('DBENDPOINT')
     my_rand = random.randint(100,999)
-    with open('/var/log/dog_breeds.txt', 'w') as writer:
+    with open('/var/log/dog_breeds.txt', 'a') as writer:
         writer.write(str(my_rand))
         writer.write('\n')
     # Further file processing goes here
