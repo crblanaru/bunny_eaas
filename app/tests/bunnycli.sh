@@ -4,6 +4,8 @@ set -x
 # never good to rush into things
 sleep 10
 
+PROJECT=467
+
 echo '-- extracting information about the pull request'
 # finding environment id from PR
 envid=$(curl -s -X 'GET' "https://api.environments.bunnyshell.com/api/projects/$PROJECT/environments?page=1" \
