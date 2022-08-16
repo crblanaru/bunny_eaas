@@ -1,5 +1,5 @@
 # debug
-set -x
+#set -x
 
 echo $BUNNY_URL_API
 # never good to rush into things
