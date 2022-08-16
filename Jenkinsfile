@@ -17,6 +17,7 @@ pipeline {
                     sh 'export GIT_BRANCH'
                     sh 'export AUTH_TOKEN'
                     sh 'export PROJECT'
+                    sh 'export BUNNY_URL_API'
                     sh 'bash ./bunnycli.sh'
                 }
             }
