@@ -32,7 +32,7 @@ done
 echo "-- performing tests"
 sleep 10
 
-curl "https://api-$unique.bnyenv.com/" | grep "bunnyshell-neo.*is_amazing"
+curl "https://api-$unique.bunnyenv.com/" | grep "bunnyshell-neo.*is_amazing"
 
 if [ $? -eq 0 ]; then
     echo "-- test SUCCESSFUL"
