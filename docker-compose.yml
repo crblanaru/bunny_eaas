@@ -2,6 +2,8 @@ services:
   api:
     build: .
     container_name: fastapi-application
+    args:
+      buildno: 19984
     environment:
       PORT: 80
     ports:
