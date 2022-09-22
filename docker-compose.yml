@@ -3,7 +3,7 @@ services:
     build: 
       context: .
       args:
-        - buildno: '19984'
+        buildno: '19984'
     container_name: fastapi-application
     environment:
       PORT: 80
