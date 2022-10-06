@@ -38,4 +38,4 @@ jobs:
     steps:
         - name: super-step
           run: |
-            -c /bunnyshell-cli environment list
+            /bunnyshell-cli environment list
