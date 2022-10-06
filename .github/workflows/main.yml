@@ -32,14 +32,10 @@ jobs:
           push: true
           tags: crblanaru/fastapi:latest,crblanaru/fastapi:v0.0.${{ github.run_number }}
   super-job:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     container:
         image: bunnyshell/cli
     steps:
         - name: super-step
-          shell: bash
           run: |
-            # Whatever commands you want to run here using the container with your
-            # new Docker image at ghcr.io!>
-            echo "--This is running in my custom Docker image--"
-            bunnyshell-cli --help
+            environment list
