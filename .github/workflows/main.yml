@@ -34,8 +34,8 @@ jobs:
   super-job:
     runs-on: ubuntu-latest
     container:
-        image: bunnyshell/cli
+        image: crblanaru/bunnyshell-cli:custom
     steps:
         - name: super-step
           run: |
-            environment list
+            -c /bunnyshell-cli environment list
