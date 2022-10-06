@@ -38,4 +38,4 @@ jobs:
     steps:
         - name: super-step
           run: |
-            /bunnyshell-cli environment list
+            /bunnyshell-cli environments list --token ${{ secrets.BUNNYSHELL_TOKEN }}
