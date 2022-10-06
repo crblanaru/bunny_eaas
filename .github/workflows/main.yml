@@ -37,6 +37,10 @@ jobs:
     container:
         image: crblanaru/bunnyshell-cli:custom
     steps:
-        - name: super-step
+        - name: clone-template
           run: |
-            /bunnyshell-cli environments list --token ${{ secrets.BUNNYSHELL_TOKEN }}
+            new_id=$( /bunnyshell-cli environments clone --id p2xKjjbeYM --name fast-api-{{ github.run_numeber}} | sed -nr 's/ProjectID.*\| (.*)/\1/p' )
+            echo 'new_id=$new_id' >> $GITHUB_ENV
+        - name: echo-env
+          run: |
+            echo "${{ env.new_id }}"
