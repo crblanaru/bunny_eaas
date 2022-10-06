@@ -49,3 +49,15 @@ jobs:
         - name: deploy-environment
           run: |
             /bunnyshell-cli environments deploy --id ${{ env.new_id }} --token ${{ secrets.BUNNYSHELL_TOKEN }}
+        - name: wait-for-deployment
+          run: |
+            sleep 50
+  run-tests:
+    runs-on: ubuntu-latest
+    needs: [create-image]
+    container:
+        image: crblanaru/bunnyshell-cli:custom
+    steps:
+        - name: simple-tests
+          run: |
+            echo "success"
