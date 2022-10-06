@@ -6,7 +6,7 @@ on:
       - 'main'
 
 jobs:
-  docker:
+  create-image:
     runs-on: ubuntu-latest
     steps:
       -
@@ -31,8 +31,9 @@ jobs:
           context: .
           push: true
           tags: crblanaru/fastapi:latest,crblanaru/fastapi:v0.0.${{ github.run_number }}
-  super-job:
+  create-environment:
     runs-on: ubuntu-latest
+    needs: [create-image]
     container:
         image: crblanaru/bunnyshell-cli:custom
     steps:
