@@ -39,8 +39,8 @@ jobs:
     steps:
         - name: clone-template
           run: |
-            new_id=$( /bunnyshell-cli environments clone --id p2xKjjbEYM --token ${{ secrets.BUNNYSHELL_TOKEN }} --name "fast-api-${{ github.run_number }}" | sed -nr 's/EnvironmentID.*\| (.*)/\1/p' )
+            new_id=$( /bunnyshell-cli environments clone --id e3xQywBxBK --token ${{ secrets.BUNNYSHELL_TOKEN }} --name "fast-api-${{ github.run_number }}" | sed -nr 's/EnvironmentID.*\| (.*)/\1/p' )
             echo "new_id=$new_id" >> $GITHUB_ENV
-        - name: echo-env
+        - name: deploy-environment
           run: |
-            echo "${{ env.new_id }}"
+            /bunnyshell-cli environments deploy --id ${{ env.new_id }} --token ${{ secrets.BUNNYSHELL_TOKEN }}
