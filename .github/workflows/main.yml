@@ -40,6 +40,7 @@ jobs:
         image: crblanaru/bunnyshell-cli:custom
     steps:
         - name: clone-template
+          id: clone-template
           run: |
             new_id=$( /bunnyshell-cli environments clone --id gADVjq7DQR --token ${{ secrets.BUNNYSHELL_TOKEN }} --name "fast-api-${{ github.run_number }}" | sed -nr 's/EnvironmentID.*\| (.*)/\1/p' )
             echo "new_id=$new_id" >> $GITHUB_ENV
