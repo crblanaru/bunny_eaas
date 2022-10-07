@@ -9,7 +9,7 @@ jobs:
   create-environment:
     runs-on: ubuntu-latest
     container:
-        image: crblanaru/bunnyshell-cli:custom
+        image: bunnyshell/cli
     steps:
         - name: clone-template
           id: clone-template
