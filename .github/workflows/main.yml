@@ -6,69 +6,12 @@ on:
       - 'main'
 
 jobs:
-  create-image:
-    runs-on: ubuntu-latest
-    steps:
-      -
-        name: Checkout
-        uses: actions/checkout@v3
-      -
-        name: Set up QEMU
-        uses: docker/setup-qemu-action@v2
-      -
-        name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
-      -
-        name: Login to DockerHub
-        uses: docker/login-action@v2
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-      -
-        name: Build and push
-        uses: docker/build-push-action@v3
-        with:
-          context: .
-          push: true
-          tags: crblanaru/fastapi:latest,crblanaru/fastapi:v0.0.${{ github.run_number }}
   create-environment:
     runs-on: ubuntu-latest
-    needs: [create-image]
-    outputs:
-      new_id: ${{ steps.clone-template.outputs.new_id }}
     container:
         image: crblanaru/bunnyshell-cli:custom
     steps:
         - name: clone-template
           id: clone-template
           run: |
-            new_id=$( /bunnyshell-cli environments clone --id gADVjq7DQR --token ${{ secrets.BUNNYSHELL_TOKEN }} --name "fast-api-${{ github.run_number }}" | sed -nr 's/EnvironmentID.*\| (.*)/\1/p' )
-            echo "::set-output name=new_id::$new_id"
-        # need one more step here where I alter the image name for the helm chart by setting an environment variable
-        # using sleep to give me time to perform this step manually
-        - name: set-env-variable
-          run: |
-            sleep 10
-        - name: deploy-environment
-          run: |
-            event_id=$( /bunnyshell-cli environments deploy --id ${{ steps.clone-template.outputs.new_id }} -o json --token ${{ secrets.BUNNYSHELL_TOKEN }} 2>&1 |  sed -nr 's/EventID.*\| (.*)/\1/p' )
-            /bunnyshell-cli events show --id $event_id --monitor --token ${{ secrets.BUNNYSHELL_TOKEN }}
-  run-tests:
-    runs-on: ubuntu-latest
-    needs: [create-environment]
-    container:
-        image: crblanaru/bunnyshell-cli:custom
-    steps:
-        - name: simple-tests
-          run: |
-            echo "success"
-  clean-up:
-    runs-on: ubuntu-latest
-    needs: [create-environment, run-tests]
-    container:
-        image: crblanaru/bunnyshell-cli:custom
-    steps:
-        - name: delete-ephemeral
-          run: |
-            event_id=$( /bunnyshell-cli environments delete --id ${{needs.create-environment.outputs.new_id}} -o json --token ${{ secrets.BUNNYSHELL_TOKEN }} 2>&1 |  sed -nr 's/EventID.*\| (.*)/\1/p' )
-            /bunnyshell-cli events show --id $event_id --monitor --token ${{ secrets.BUNNYSHELL_TOKEN }}
+            bunnyshell-cli environments list --token ${{ secrets.BUNNYSHELL_TOKEN }}
