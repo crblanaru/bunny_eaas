@@ -16,4 +16,4 @@ jobs:
           run: |
             mkdir ~/.bunnyshell && echo 'outputformat: json' > ~/.bunnyshell/config.yaml
             whoami
-            bunnyshell-cli environments list --token ${{ secrets.BUNNYSHELL_TOKEN }} -o json
+            bunnyshell-cli environments list --token ${{ secrets.BUNNYSHELL_TOKEN }}
