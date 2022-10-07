@@ -62,7 +62,7 @@ jobs:
         - name: simple-tests
           run: |
             status_code=$(curl --write-out %{http_code} --silent --output /dev/null bunnyshell.com)
-            if [[ "$status_code" -ne 200 ]] ; then
+            if [[ "$status_code" -ne 301 ]] ; then
               echo "Site status changed to $status_code" | exit 1
             else
               exit 0
