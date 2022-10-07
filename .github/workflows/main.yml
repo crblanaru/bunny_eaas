@@ -63,12 +63,9 @@ jobs:
         - name: simple-tests
           run: |
             echo "success"
-        - name: echo-var
-          run: | 
-            echo ${{needs.create-environment.outputs.output1}}
   clean-up:
     runs-on: ubuntu-latest
-    needs: [run-tests]
+    needs: [create-environment, run-tests]
     container:
         image: crblanaru/bunnyshell-cli:custom
     steps:
