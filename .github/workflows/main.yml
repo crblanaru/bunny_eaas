@@ -48,9 +48,7 @@ jobs:
             sleep 10
         - name: deploy-environment
           run: |
-            /bunnyshell-cli environments deploy --id ${{ env.new_id }} -o json --token ${{ secrets.BUNNYSHELL_TOKEN }} 2>&1 > result.json
-            cat result.json
-            event_id=$( jq '.id' < result.json )
+            event_id=$( /bunnyshell-cli environments deploy --id ${{ env.new_id }} -o json --token ${{ secrets.BUNNYSHELL_TOKEN }} 2>&1 |  sed -nr 's/EventID.*\| (.*)/\1/p' )
             /bunnyshell-cli events show --id $event_id --monitor --token ${{ secrets.BUNNYSHELL_TOKEN }}
   run-tests:
     runs-on: ubuntu-latest
