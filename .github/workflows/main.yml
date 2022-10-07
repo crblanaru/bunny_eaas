@@ -52,7 +52,7 @@ jobs:
             /bunnyshell-cli events show --id $event_id --monitor --token ${{ secrets.BUNNYSHELL_TOKEN }}
   run-tests:
     runs-on: ubuntu-latest
-    needs: [create-image]
+    needs: [create-environment]
     container:
         image: crblanaru/bunnyshell-cli:custom
     steps:
