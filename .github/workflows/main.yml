@@ -43,7 +43,6 @@ jobs:
           id: clone-template
           run: |
             new_id=$( /bunnyshell-cli environments clone --id gADVjq7DQR --token ${{ secrets.BUNNYSHELL_TOKEN }} --name "fast-api-${{ github.run_number }}" | sed -nr 's/EnvironmentID.*\| (.*)/\1/p' )
-            echo "new_id=$new_id" >> $GITHUB_ENV
             echo "::set-output name=new_id::$new_id"
         # need one more step here where I alter the image name for the helm chart by setting an environment variable
         # using sleep to give me time to perform this step manually
