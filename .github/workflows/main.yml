@@ -14,5 +14,5 @@ jobs:
         - name: clone-template
           id: clone-template
           run: |
-            /bunnyshell-cli environments list --token ${{ secrets.BUNNYSHELL_TOKEN }} -o json
+            /bunnyshell-cli environments list -o yaml --token ${{ secrets.BUNNYSHELL_TOKEN }} 
        
